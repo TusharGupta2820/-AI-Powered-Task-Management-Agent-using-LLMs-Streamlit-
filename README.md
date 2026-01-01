@@ -1,166 +1,85 @@
-# -AI-Powered-Task-Management-Agent-using-LLMs-Streamlit-
-An AI-powered task management system that helps users organize daily tasks intelligently.
-The agent automatically prioritizes tasks (Urgent / Normal) using a Large Language Model and allows users to manage tasks through a simple Streamlit UI.
+# AI To-Do Manager Agent
 
-This project demonstrates Agentic AI behavior using perception, reasoning, and action.
+An intelligent task management application that uses AI to automatically prioritize your tasks.
 
-🚀 What This Project Does
+## Features
 
-✔ Allows users to add, update, delete, and complete tasks
-✔ Automatically assigns priority using AI reasoning
-✔ Stores tasks persistently using SQLite
-✔ Provides a clean and interactive Streamlit interface
-✔ Demonstrates real-world use of AI agents (CRUD + reasoning)
+- Simple Streamlit-based UI
+- Automatic task prioritization using AI
+- Manual override for task priorities
+- CRUD operations for tasks
+- SQLite database for task storage
+- Task statistics dashboard
 
-🤖 Agentic AI Behavior
+## Requirements
 
-The AI To-Do Manager works like an intelligent agent:
+- Python 3.7+
+- OpenAI API key (optional, uses fallback if not provided)
 
-1️⃣ Perception
+## Setup Instructions
 
-Takes natural language task input from the user
-Example:
+1. Clone or download this repository to your local machine
 
-“Submit internship report tomorrow morning”
+2. Create a virtual environment (recommended):
+   ```bash
+   python -m venv venv
+   ```
 
-2️⃣ Reasoning
+3. Activate the virtual environment:
+   - On Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
 
-Uses an LLM to analyze task urgency
+4. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Decides whether the task is Urgent or Normal
+5. Create a `.env` file in the project root directory and add your OpenAI API key:
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
+   
+   > **Note**: If you don't have an OpenAI API key, the application will use a keyword-based fallback for task prioritization.
 
-3️⃣ Action
+6. Run the application:
+   ```bash
+   streamlit run main.py
+   ```
 
-Stores the task with priority in the database
+## How to Use
 
-Displays prioritized tasks in the UI
+1. Enter a task description in the input field
+2. The AI will suggest a priority (Urgent or Normal)
+3. You can manually override the priority if needed
+4. Click "Add Task" to save
+5. Use the action buttons to mark tasks as complete, change priority, edit, or delete tasks
 
-Allows users to update task status
+## Project Structure
 
-🛠 Tech Stack
+- `main.py`: Streamlit UI implementation
+- `database.py`: SQLite database operations
+- `ai_agent.py`: AI prioritization logic
+- `requirements.txt`: Project dependencies
+- `.env`: Environment variables (not included in the repository)
 
-Python 3.10+
+## Architecture
 
-Streamlit – UI
+The application follows a modular design:
 
-SQLite – Database
+- **UI Layer**: Streamlit-based interface in `main.py`
+- **Data Layer**: SQLite database operations in `database.py`
+- **AI Layer**: Task prioritization logic in `ai_agent.py`
 
-LLM API (OpenAI / compatible) – Task prioritization
+## Fallback Mechanism
 
-dotenv – Environment variable management
+If no OpenAI API key is provided, the application uses a keyword-based approach to determine task priority, checking for urgent keywords in the task description.
 
-📁 Project Structure
-ai-todo-manager-agent/
-│
-├── app.py              # Streamlit UI
-├── database.py         # SQLite CRUD operations
-├── ai_agent.py         # AI priority classification logic
-├── requirements.txt    # Project dependencies
-├── .env                # API keys (not committed)
-├── todo.db             # SQLite database
-└── README.md
+## License
 
-📌 Features
-
-✅ Add new tasks
-
-✅ AI-based priority detection
-
-✅ Manual priority override
-
-✅ Update task status (Pending / Completed)
-
-✅ Delete tasks
-
-✅ Persistent storage with SQLite
-
-🔑 Prerequisites
-
-Python 3.10 or higher
-
-LLM API key (OpenAI / compatible)
-
-Git (optional)
-
-⚙️ Setup Instructions
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/ai-todo-manager-agent.git
-cd ai-todo-manager-agent
-
-2️⃣ Create Virtual Environment
-python -m venv venv
-
-
-Activate it:
-
-Windows
-
-venv\Scripts\activate
-
-
-Linux / Mac
-
-source venv/bin/activate
-
-3️⃣ Install Dependencies
-pip install -r requirements.txt
-
-4️⃣ Set Environment Variables
-
-Create a .env file in the project root:
-
-OPENAI_API_KEY=your_api_key_here
-
-
-⚠️ Do not commit this file to GitHub
-
-5️⃣ Run the Application
-streamlit run app.py
-
-
-Open in browser:
-
-http://localhost:8501
-
-🖥 Example Usage
-
-User Input:
-
-“Prepare slides for client meeting tomorrow morning”
-
-AI Output:
-
-Priority: Urgent
-
-Status: Pending
-
-Stored in database automatically
-
-📦 Database Schema (SQLite)
-Column	Type
-id	INTEGER (Primary Key)
-task	TEXT
-priority	TEXT
-status	TEXT
-created_at	TIMESTAMP
-🔮 Future Enhancements
-
-🔔 Notifications & reminders
-
-🎤 Voice input support
-
-📊 Task analytics dashboard
-
-🧠 Memory-based task suggestions
-
-🐳 Docker deployment
-
-☁️ Cloud database support
-
-🎯 Why This Project Is Internship-Ready
-
-✔ Uses real AI reasoning (not hardcoded rules)
-✔ Demonstrates agent architecture
-✔ Clean modular code
-✔ Practical real-world use case
-✔ Easy to extend and scale
+This project is open source and available under the MIT License.
